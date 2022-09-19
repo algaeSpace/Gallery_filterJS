@@ -1,0 +1,706 @@
+<!-- Comment : 
+   
+   there are a few more features that are eliminated / modified
+   1. Elimiate the Star rating (eliminated)
+   2. The flip flop card is eliminated, since all meta data will be displayed under the card (eliminated)
+   3. Meta data looks like button (modified)
+   4. Modified to the name of the app, instead of package name
+   -----------
+   These will be noted as "Elim.1", "Elim.2", "modified.1"
+   -->
+
+<!-- To do :
+  
+  [] Modified to the name of the app, instead of package name
+  [] Color of the tag
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="assets/scss/gif.css" media="screen" rel="stylesheet" type="text/css">
+
+
+    <link href="assets/css/jquery-ui-1.10.2.custom.min.css" media="screen" rel="stylesheet" type="text/css">
+
+
+    <!-- font -->
+    <link href="http://fonts.cdnfonts.com/css/fontype-rounded" rel="stylesheet">
+    <link href="assets/css/stream.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
+    <script src="../dist/filter.js" type="text/javascript"></script>
+    <script src="data/movies.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gifffer@1.5.4/build/gifffer.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="assets/js/libgif.js"></script>
+    <script type="text/javascript" src="assets/js/rubbable.js"></script>
+</head>
+
+<body id="body_id">
+
+
+    <div class="container">
+        <h1 class="title"></h1>
+
+        <br>
+        <div class="sidebar col-md-3">
+            <div>
+                <!-- <h4 class=''>Total examples (<span id="total_movies">183</span>)</h4> -->
+                <!-- <div class="col-md-6 progress">
+                  <div class="progress-bar" id="stream_progress" style="width:1 0%;">0%</div>
+               </div> -->
+            </div>
+            <div>
+                <label class="sr-only" for="searchbox">Search</label>
+                <input type=" 👉 Text" class="form-control" id="searchbox" placeholder="Search &hellip;">
+                <span class="glyphicon glyphicon-search search-icon"></span>
+            </div>
+            <br>
+
+
+            <!-- example -->
+            <!-- <img src='https://media.giphy.com/media/Byana3FscAMGQ/giphy.gif' class="gif" /> -->
+
+
+            <legend id="filter_lengend">Filters</legend>
+
+            <!-- Model filter -->
+            <button type="button" class="collapsible">Model</button>
+            <div class="contents">
+                <div class="well">
+
+                    <fieldset id="outline_criteria">
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value="All" id="all_models">
+                        <span>All</span>
+                        </label>
+                        </div>
+                        <h4 id="filter_IS">Camera input</h4>
+
+                        <!-- testing -->
+
+
+                        <!-- sads -->
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Barcode scanning" >
+                           <div class="icon_model">
+                              <span>Barcode scanning</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model Scan and process barcodes & QR code.">
+                              </div>
+                           </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Entity extraction" >
+                           <div class="icon_model">
+                              <span>ID Document classification</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model detects and locates entities (such as addresses, date/time, phone numbers, and more) and take action based on those entities.">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Face detection" >
+                           <div class="icon_model">
+                              <span>Face detection</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model detect faces and facial features (e.g., lip).">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+
+                            <label>
+                           <input type="checkbox" value=" 👉 Object detection and tracking" >
+                           <div class="icon_model">
+                              <span>Object detection and <br>tracking</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model localises and tracks in real time one or more objects in the live camera feed.">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Pose detection" >
+                           <div class="icon_model">
+                              <span>Pose detection</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model detects the position of the human body in real time.">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+
+
+                            <label>
+                           <input type="checkbox" value=" 👉 Selfie segmentation" >
+                           <div class="icon_model">
+                              <span>Selfie segmentation</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model separates the background from users within a scene and focus on what matters.">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+
+                            <label>
+                           <input type="checkbox" value=" 👉 Style transfer" >
+                           <div class="icon_model">
+                              <span>Style transfer</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model composes one image in the style of another image.">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Image classification" >
+                           <div class="icon_model">
+                              <span>Image classification</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model identifies objects, locations, activities, animal species, products, and more. It can tailor to a particular use case (e.g., Hotdog or Not?). ">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+
+                            <label>
+                           <input type="checkbox" value=" 👉 Image segmentation" >
+                           <div class="icon_model">
+                              <span>Image segmentation</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model divides the image into different segments.">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+
+                            <label>
+                           <input type="checkbox" value=" 👉 Text prediction" >
+                           <div class="icon_model">
+                              <span>Text prediction</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model anticipates user's next words and suggests words or phrases as user type.">
+                              </div>
+                           </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Text recognition" >
+                           <div class="icon_model">
+                              <span>Text recognition</span>
+                              <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model recognises and extracts text from images.">
+                              </div>
+                           </label>
+                        </div>
+                        <h4 id="filter_IS">Audio input</h4>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Audio classification" >
+                        <div class="icon_model">
+                        <span>Audio classification</span>
+                        <img  src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model classifies different categories of sounds.">
+                     </div>
+      
+                        
+                        </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Speech recongnition" >
+                        <div class="icon_model">
+                           <span>Speech recongnition</span>
+                           <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This model understands the spoken words of the person speaking, and convert them to texts.">
+                           </div>
+                        </label>
+                        </div>
+                    </fieldset>
+                    <br>
+                </div>
+            </div>
+
+
+            <!-- Interaction category filter -->
+            <button type="button" class="collapsible">Interaction Style</button>
+            <div class="contents">
+                <div class="well">
+                    <fieldset id="genre">
+                        <div id="filter_text" class="checkbox">
+                            <label>
+              <input type="checkbox" value="All" id="all_genres">
+              <span>All</span>
+              </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+               <input type="checkbox" value="No Interaction" >
+               <div class="icon_model">
+                  <span>Minimal feedback</span>
+                  <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="When any action is triggered by a user, the app does not respond with any form of communication.">
+                  </div>
+               </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+               <input type="checkbox" value="Static" >
+               <div class="icon_model">
+                  <span>General feedback</span>
+                  <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="When using the app, the messages shown to the user will be always the same.">
+                  </div>
+               </label>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+               <input type="checkbox" value="Dynamic" >
+               <div class="icon_model">
+                  <span>Fine-grained feedback</span>
+                  <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This is an user-centric form of interaction where the app returns customisable feedback based on the user’s input.">
+                  </div>
+               </label>
+                        </div>
+
+
+
+
+
+
+                    </fieldset>
+
+                </div>
+            </div>
+            <!-- Interaction category filter -->
+
+
+
+            <!-- interaction style filter -->
+            <button type="button" class="collapsible">Interaction Style (Taxonomy)</button>
+            <div class="contents">
+                <div class="well">
+                    <!-- Interaction Style -->
+                    <fieldset id="certificate_criteria">
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 All" id="all_IS">
+                        <span>All</span>
+                        </label>
+                        </div>
+
+                        <div class="icon_model">
+                            <h4 id="filter_IS">Minimal feedback
+                                <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="When any action is triggered by a user, the app does not respond with any form of communication.">
+                            </h4>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Importing files">
+                        <span>No feeback</span>
+                        </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 No interaction with hardware input">
+                        <span>Imperceptible feedback</span>
+                        </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Delayed feedback">
+                        <span>Delayed feedback</span>
+                        </label>
+                        </div>
+                        <div class="icon_model">
+                            <h4 id="filter_IS">General feedback
+                                <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="When using the app, the messages shown to the user will be always the same.">
+                            </h4>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Visual Instruction" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_pop" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Visual instruction<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/Visual_in.png?raw=true" /></a>
+                              </div>
+                           </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Pop-up messages" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_pop" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Pop-up messages<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/pop_up.png?raw=true" /></a>
+                              </div>
+                           </label>
+                        </div>
+
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Textual Instruction" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_pop" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Textual instruction<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/text_in.png?raw=true" /></a>
+                              </div>
+                           </label>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Camera frame" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_pop" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Camera frame<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/cameraFrame.png?raw=true" /></a>
+                              </div>
+                           </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Flashlight">
+                        <span>Flashlight</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Vibration">
+                        <span>Vibration</span>
+                        </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Auditory feedback (Static)">
+                        <span>Auditory feedback (Static)</span>
+                        </label>
+                        </div>
+
+
+
+                        <div class="icon_model">
+                            <h4 id="filter_IS">Fine-grained feedback
+                                <img src="https://raw.githubusercontent.com/algaespace/Gallery_filterJS/main/examples/assets/css/images/question_mark.png" title="This is an user-centric form of interaction where the app returns customisable feedback based on the user’s input.">
+                            </h4>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <div></div>
+                            <label>
+                           <input type="checkbox" value=" 👉 Auto focusing object" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_af" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Auto focusing object<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/auto_focus.gif?raw=true" /></a>
+                              </div>
+                           </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Text suggestion" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_ts" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Text suggestion<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/textSuggestion.gif?raw=true" /></a>
+                              </div>
+                           </label>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Object sensor" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_os" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Object detector<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/objSensor.gif?raw=true" /></a>
+                            
+                              </div>
+                           </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                           <input type="checkbox" value=" 👉 Audio cue" >
+                           <div class="icon_model">
+                        
+                            <a id="snapchat_os" style="margin: 5px 5px 0 -2px;" href="javascript:void(0);">Audio dynamic cue<img src="https://github.com/algaespace/Gallery_filterJS/blob/main/examples/assets/interaction_demo/soundwave.gif?raw=true" /></a>
+                              
+                              </div>
+                           </label>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Auditory feedback (Dynamic)">
+                        <span>Auditory feedback (Dynamic)</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 User personalisation">
+                        <span>Input personalisation</span>
+                        </label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <!-- Interaction Mode filter -->
+
+
+            <button type="button" class="collapsible">App category</button>
+            <div class="contents">
+                <div class="well">
+                    <fieldset id="director">
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value="All" id="all_director">
+                        <span>All</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Libraries and Demo" >
+                        <span>Libraries and Demo</span>
+                        </label>
+                        </div>
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Finance" >
+                        <span>Finance</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Photography" >
+                        <span>Photography</span>
+                        </label>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Dating" >
+                        <span>Dating</span>
+                        </label>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Communication" >
+                        <span>Communication</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Health and Fitness" >
+                        <span>Health and Fitness</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Education" >
+                        <span>Education</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Business" >
+                        <span>Business</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Personalization" >
+                        <span>Personalization</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Art and Design" >
+                        <span>Art and Design</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Tools" >
+                        <span>Tools</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Productivity" >
+                        <span>Productivity</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Social" >
+                        <span>Social</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Shopping" >
+                        <span>Shopping</span>
+                        </label>
+                        </div>
+
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Entertainment" >
+                        <span>Entertainment</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Sports" >
+                        <span>Sports</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Lifestyle" >
+                        <span>Lifestyle</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Medical" >
+                        <span>Medical</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Food and Drink" >
+                        <span>Food and Drink</span>
+                        </label>
+                        </div>
+
+                        <div id="filter_text" class="checkbox">
+                            <label>
+                        <input type="checkbox" value=" 👉 Beauty" >
+                        <span>Beauty</span>
+                        </label>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- Interaction category -->
+        <!-- card -->
+        <div class="col-md-9">
+
+
+            &nbsp
+
+            <div class="movies content row" id="movies"> </div>
+        </div>
+    </div>
+
+    <script id="movie-template" type="javascript/html">
+
+        <div class="col-md-4 movie">
+            <div class="thumbnail">
+
+                <!-- Start - Elim.1 -->
+                <!-- <span class="label label-success rating">
+               <%= rating %>
+               <i class="glyphicon glyphicon-star"></i>
+             </span> -->
+                <!-- End - Elim.1 -->
+
+                <!-- Start - Elim.2 -->
+                <!-- <div class="caption">
+               <h4><%= _fid %>. <%= name %></h4>
+               <div class="outline" id="card_text">
+                 <br>
+                 <b>Model : </b><%= outline %> <br>
+                 <b>Representation : </b><%= representation %><br>
+                 <b>App category :</b> <%= director %>
+                 
+               </div> -->
+                <!-- End - Elim.1 -->
+
+
+                <div class="detail">
+                    <dl>
+                        <h4>
+                            <!-- <%= _fid %>. -->
+                                <%= name %>
+                        </h4> <br>
+
+
+                        <img data-gifffer=<%=year %> data-gifffer-width ="100%" style="width: 24.5rem; display: block; margin-left: auto; margin-right: auto;"loading="lazy">
+
+                        <!-- <img src=<%=year %> style="width: 24.5rem; display: block; margin-left: auto; margin-right: auto;"loading="lazy" class="gif"> -->
+
+                        <!-- 
+                   <dt>Director</dt><dd><%= director %></dd>
+                   <dt>Actors</dt>
+                   <dd><%= stars %></dt> -->
+                        <!-- <dt>Year</dt> -->
+                        <!-- <dd><%= year %></dd> -->
+                        <br>
+                        <dd id="card_title">
+
+                            <button id="button_style" data-title="   CATEGORY: <%= director %>.
+   USER INTERACTION: <%= certificate %>. 
+   MODEL TYPE: <%= outline %>.  
+">
+
+                        <!-- <%= certificate %> 
+                        <%= outline %>  -->
+                        Show details
+
+
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+
+    </script>
+
+
+
+<!-- controlling gif files -->
+<script src="assets/js/gif_stop.js" type="text/javascript"></script>
+<!-- Animated Collapsibles -->
+<script src="assets/js/filter_Animated_Collapsibles.js" type="text/javascript"></script>
+
+
+
+
+</body>
+
+</html>
